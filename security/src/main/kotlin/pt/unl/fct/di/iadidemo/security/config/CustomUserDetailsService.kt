@@ -5,7 +5,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import pt.unl.fct.di.iadidemo.security.application.services.UserService
 
@@ -43,7 +42,7 @@ class CustomUserDetailsService(val users: UserService) : UserDetailsService {
                     CustomUserDetails(
                         it.username,
                         it.password,
-                        mutableListOf(SimpleGrantedAuthority("ROLE_USER"), SimpleGrantedAuthority("ROLE_ADMIN")))
+                        mutableListOf(SimpleGrantedAuthority("ROLE_${it.role}")))
                         // TODO: Authorities need to be gathered from roles or stored as separate authorities in the model
                 }
 

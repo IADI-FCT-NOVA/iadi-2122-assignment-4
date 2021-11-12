@@ -51,9 +51,9 @@ data class UserDAO(
     @Id
     val username:String,
 
-    val password:String,
+    var password:String,
 
-    val roles:String,
+    val role:String,
 
     val name:String,
 
